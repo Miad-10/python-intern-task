@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Q&A System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .answer-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .answer-text {
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Book Q&A System</h1>
+        <form method="post">
+            <input type="text" name="question" placeholder="Ask about books under £20..." required>
+            <button type="submit">Ask</button>
+        </form>
+
+        {% if answer %}
+        <div class="answer-box">
+            <h3>❓ {{ question }}</h3>
+            <div class="answer-text">
+                {{ answer.replace("$", "£") | safe }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
